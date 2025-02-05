@@ -1,0 +1,8 @@
+streamlit          # Framework pour créer des applications web interactives en Python
+langchain         # Framework pour développer des applications basées sur des modèles de langage (LLMs)
+langchain_ollama  # Intégration de LangChain avec Ollama pour exécuter des LLMs en local
+selenium          # Outil pour automatiser le navigateur web (scraping, tests automatisés)
+beautifulsoup4    # Bibliothèque pour extraire et analyser des données HTML et XML
+lxml              # Outil performant pour manipuler des fichiers XML et HTML (utilisé avec BeautifulSoup)
+html5lib          # Parser HTML qui respecte strictement les normes HTML5
+python-dotenv     # Charge les variables d'environnement depuis un fichier .env (utile pour cacher des configs sensibles)
