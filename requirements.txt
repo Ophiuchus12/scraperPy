@@ -6,3 +6,4 @@ beautifulsoup4    # Bibliothèque pour extraire et analyser des données HTML et
 lxml              # Outil performant pour manipuler des fichiers XML et HTML (utilisé avec BeautifulSoup)
 html5lib          # Parser HTML qui respecte strictement les normes HTML5
 python-dotenv     # Charge les variables d'environnement depuis un fichier .env (utile pour cacher des configs sensibles)
+g4f 
