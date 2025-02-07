@@ -1,7 +1,7 @@
 from models import models
-from g4f import Client
+from g4f import AsyncClient
 
-client = Client()
+client = AsyncClient()
 
 template = (
     "You are tasked with extracting specific information from the following text content: {dom_content}. "
@@ -14,20 +14,21 @@ template = (
 
 print ("models", models)
 
-def parse_with_ai(dom_chunks, parse_description):
+async def parse_with_ai(dom_chunks, parse_description):
     parse_results = []
     for model in models : 
         try: 
             for i, chunk in enumerate(dom_chunks):
-                response = client.chat.completions.create(
+                response = await client.chat.completions.create(
                     model = model,
                     messages = [
                         {"role": "user", "content": template.format(dom_content= chunk, parse_description=parse_description)}
                     ], 
                     web_search = False
                 )
-                parse_results.append(response.choices[0].message.content)
-                print(f"Parsed batch: {i+1} of {len(dom_chunks)} with model {model}")
+                if response :
+                    parse_results.append(response.choices[0].message.content)
+                    print(f"Parsed batch: {i+1} of {len(dom_chunks)} with model {model}")
                 
             return "\n".join(parse_results)
         except Exception as e:
