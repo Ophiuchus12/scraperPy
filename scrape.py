@@ -30,6 +30,13 @@ def scrape_website(website):
 
     try:
         driver.get(website)
+        driver.execute_script("""
+            let elements = document.querySelectorAll(
+                '[id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"]'
+            );
+            elements.forEach(el => el.remove());
+        """)
+
         print("page loaded...")
         html = driver.page_source
         time.sleep(10)
