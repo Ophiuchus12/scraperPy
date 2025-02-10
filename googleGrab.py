@@ -11,8 +11,8 @@ def google_search_results (query):
 
     chrome_driver_path = "./chromedriver"
     options = webdriver.ChromeOptions()
-    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")  
-    options.add_argument("--headless=new")  
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.6943.53 Safari/537.36")  
+    options.add_argument("--headless")
     options.add_argument("--disable-blink-features=AutomationControlled")  
    
 
@@ -24,9 +24,7 @@ def google_search_results (query):
         driver.get("https://www.google.com/search?q="+query)
         print("page loaded...")
 
-        for _ in range(3): 
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(2)
+        
 
         html = driver.page_source
         time.sleep(10)
@@ -42,11 +40,12 @@ def google_search_results (query):
             if link :
                 links.append(link['href'])
         print (links)
-        return links 
+        return links
 
     finally:
         driver.quit()
 
+    
         
 
 
